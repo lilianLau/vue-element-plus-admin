@@ -447,7 +447,7 @@ export default defineComponent({
               headerAlign={v.headerAlign || headerAlign}
               label={v.label}
               fixed={v.fixed}
-              width="65px"
+              width="50px"
             ></ElTableColumn>
           )
         } else if (v.type === 'selection') {

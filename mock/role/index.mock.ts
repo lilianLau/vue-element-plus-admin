@@ -9,35 +9,130 @@ const adminList = [
     path: '/dashboard',
     component: '#',
     redirect: '/dashboard/analysis',
-    name: 'Dashboard',
+    name: 'Raw Data',
     meta: {
       title: 'router.dashboard',
-      icon: 'vi-ant-design:dashboard-filled',
+      icon: 'vi-cil:border-all',
       alwaysShow: true
     },
     children: [
       {
         path: 'analysis',
         component: 'views/Dashboard/Analysis',
-        name: 'Analysis',
+        name: 'Add New Raw Data',
         meta: {
           title: 'router.analysis',
           noCache: true,
           affix: true
         }
+      }
+      // {
+      //   path: 'workplace',
+      //   component: 'views/Dashboard/Workplace',
+      //   name: 'Workplace',
+      //   meta: {
+      //     title: 'router.workplace',
+      //     noCache: true,
+      //     affix: true
+      //   }
+      // }
+    ]
+  },
+  {
+    path: '/reports',
+    component: '#',
+    redirect: '/reports/sales',
+    name: 'Reports',
+    meta: {
+      title: 'router.reports',
+      icon: 'vi-eos-icons:role-binding',
+      alwaysShow: true
+    },
+    children: [
+      {
+        path: 'sales',
+        component: 'views/Reports/Sales',
+        name: 'Sales',
+        meta: {
+          title: 'router.sales'
+        }
       },
       {
-        path: 'workplace',
-        component: 'views/Dashboard/Workplace',
-        name: 'Workplace',
+        path: 'inventory',
+        component: 'views/Reports/Inventory',
+        name: 'Inventory',
         meta: {
-          title: 'router.workplace',
-          noCache: true,
-          affix: true
+          title: 'router.inventory'
+        }
+      },
+      {
+        path: 'araging',
+        component: 'views/Reports/ARaging',
+        name: 'AR Aging',
+        meta: {
+          title: 'router.arAging'
+        }
+      },
+      {
+        path: 'principalaging',
+        component: 'views/Reports/PrincipalAging',
+        name: 'PrincipalAging',
+        meta: {
+          title: 'router.principalAging'
         }
       }
     ]
   },
+  {
+    path: '/templates',
+    component: '#',
+    name: 'Template',
+    meta: {},
+    children: [
+      {
+        path: 'index',
+        component: 'views/Templates/Templates',
+        name: 'Templates',
+        meta: {
+          title: 'router.templates',
+          icon: 'vi-cib:telegram-plane'
+        }
+      }
+    ]
+  },
+  // {
+  //   path: '/user',
+  //   component: '#',
+  //   redirect: '/user/useracclist',
+  //   name: 'User',
+  //   meta: {
+  //     title: 'router.users',
+  //     icon: 'vi-cil:border-all',
+  //     alwaysShow: true
+  //   },
+  //   children: [
+  //     {
+  //       path: 'useracclist',
+  //       component: 'views/User/UserAccList',
+  //       name: 'User Acc List',
+  //       meta: {
+  //         title: 'router.userAccList',
+  //         noCache: true,
+  //         affix: true
+  //       }
+  //     },
+  //     {
+  //       path: 'usermanagement',
+  //       component: 'views/User/UserManagement',
+  //       name: 'User Management',
+  //       meta: {
+  //         title: 'router.userManagement',
+  //         noCache: true,
+  //         affix: true
+  //       }
+  //     }
+  //   ]
+  // },
   {
     path: '/external-link',
     component: '#',
@@ -745,7 +840,17 @@ const testList: string[] = [
   '/error',
   '/error/404-demo',
   '/error/403-demo',
-  '/error/500-demo'
+  '/error/500-demo',
+  '/reports',
+  '/reports/sales',
+  '/reports/inventory',
+  '/reports/araging',
+  '/reports/principalaging',
+  '/templates',
+  '/templates/index',
+  '/users',
+  '/users/useracclist',
+  '/users/usermanagement'
 ]
 
 const List: any[] = []
@@ -757,39 +862,156 @@ const menus = [
       path: '/dashboard',
       component: '#',
       redirect: '/dashboard/analysis',
-      name: 'Dashboard',
+      name: 'Raw Data',
       status: Mock.Random.integer(0, 1),
       id: 1,
       meta: {
         title: '首页',
-        icon: 'vi-ant-design:dashboard-filled',
+        icon: 'vi-cil:border-all',
         alwaysShow: true
       },
       children: [
         {
           path: 'analysis',
           component: 'views/Dashboard/Analysis',
-          name: 'Analysis',
+          name: 'Add New Raw Data',
           status: Mock.Random.integer(0, 1),
           id: 2,
           meta: {
             title: '分析页',
             noCache: true
           }
-        },
-        {
-          path: 'workplace',
-          component: 'views/Dashboard/Workplace',
-          name: 'Workplace',
-          status: Mock.Random.integer(0, 1),
-          id: 3,
-          meta: {
-            title: '工作台',
-            noCache: true
-          }
         }
+        // {
+        //   path: 'workplace',
+        //   component: 'views/Dashboard/Workplace',
+        //   name: 'Workplace',
+        //   status: Mock.Random.integer(0, 1),
+        //   id: 3,
+        //   meta: {
+        //     title: '工作台',
+        //     noCache: true
+        //   }
+        // }
       ]
     },
+    // {
+    //   path: '/templates',
+    //   component: '#',
+    //   name: 'Templates',
+    //   meta: {},
+    //   status: Mock.Random.integer(0, 1),
+    //   id: 4,
+    //   children: [
+    //     {
+    //       path: 'index',
+    //       component: 'views/Templates/Templates',
+    //       name: 'Templates',
+    //       status: Mock.Random.integer(0, 1),
+    //       id: 5,
+    //       meta: {
+    //         title: 'router.templates',
+    //         icon: 'vi-cib:telegram-plane'
+    //       }
+    //     }
+    //   ]
+    // },
+    // {
+    //   path: '/reports',
+    //   component: '#',
+    //   redirect: '/reports/sales',
+    //   name: 'Sales',
+    //   status: Mock.Random.integer(0, 1),
+    //   id: 9,
+    //   meta: {
+    //     title: '销售',
+    //     icon: 'vi-cil:border-all',
+    //     alwaysShow: true
+    //   },
+    //   children: [
+    //     {
+    //       path: 'sales',
+    //       component: 'views/Reports/Sales',
+    //       name: 'Sales',
+    //       status: Mock.Random.integer(0, 1),
+    //       id: 10,
+    //       meta: {
+    //         title: '销售',
+    //         noCache: true
+    //       }
+    //     },
+    //     {
+    //       path: 'inventory',
+    //       component: 'views/Reports/Inventory',
+    //       name: 'Inventory',
+    //       status: Mock.Random.integer(0, 1),
+    //       id: 11,
+    //       meta: {
+    //         title: '库存',
+    //         noCache: true
+    //       }
+    //     },
+    //     {
+    //       path: 'araging',
+    //       component: 'views/Reports/ARaging',
+    //       name: 'AR Aging',
+    //       status: Mock.Random.integer(0, 1),
+    //       id: 11,
+    //       meta: {
+    //         title: 'AR Aging',
+    //         noCache: true
+    //       }
+    //     },
+    //     {
+    //       path: 'principalaging',
+    //       component: 'views/Reports/PrincipalAging',
+    //       name: 'Principal Aging',
+    //       status: Mock.Random.integer(0, 1),
+    //       id: 11,
+    //       meta: {
+    //         title: 'Principal Aging',
+    //         noCache: true
+    //       }
+    //     }
+    //   ]
+    // },
+    // {
+    //   path: '/users',
+    //   component: '#',
+    //   redirect: '/users/useracclist',
+    //   name: 'User',
+    //   status: Mock.Random.integer(0, 1),
+    //   id: 9,
+    //   meta: {
+    //     title: '用户',
+    //     icon: 'vi-cil:border-all',
+    //     alwaysShow: true
+    //   },
+    //   children: [
+    //     {
+    //       path: 'analysis',
+    //       component: 'views/Users/UserAccList',
+    //       name: 'User Acc List',
+    //       status: Mock.Random.integer(0, 1),
+    //       id: 10,
+    //       meta: {
+    //         title: '用户帐号管理',
+    //         noCache: true
+    //       }
+    //     },
+    //     {
+    //       path: 'usermanagement',
+    //       component: 'views/Users/UserManagement',
+    //       name: 'User Management',
+    //       status: Mock.Random.integer(0, 1),
+    //       id: 11,
+    //       meta: {
+    //         title: '用户管理',
+    //         noCache: true
+    //       }
+    //     }
+    //   ]
+    // },
     {
       path: '/external-link',
       component: '#',
@@ -985,40 +1207,135 @@ const menus = [
       path: '/dashboard',
       component: '#',
       redirect: '/dashboard/analysis',
-      name: 'Dashboard',
+      name: 'Raw Data',
       status: Mock.Random.integer(0, 1),
       id: 1,
       meta: {
         title: '首页',
-        icon: 'vi-ant-design:dashboard-filled',
+        icon: 'vi-cil:border-all',
         alwaysShow: true
       },
       children: [
         {
           path: 'analysis',
           component: 'views/Dashboard/Analysis',
-          name: 'Analysis',
+          name: 'Add New Raw Data',
           status: Mock.Random.integer(0, 1),
           id: 2,
           meta: {
             title: '分析页',
             noCache: true
           }
-        },
-        {
-          path: 'workplace',
-          component: 'views/Dashboard/Workplace',
-          name: 'Workplace',
-          status: Mock.Random.integer(0, 1),
-          id: 3,
-          meta: {
-            title: '工作台',
-            noCache: true
-          }
         }
+        // {
+        //   path: 'workplace',
+        //   component: 'views/Dashboard/Workplace',
+        //   name: 'Workplace',
+        //   status: Mock.Random.integer(0, 1),
+        //   id: 3,
+        //   meta: {
+        //     title: '工作台',
+        //     noCache: true
+        //   }
+        // }
       ]
     }
   ],
+  // [{
+  //   path: '/reports',
+  //   component: '#',
+  //   redirect: '/reports/sales',
+  //   name: 'Reports',
+  //   meta: {
+  //     title: 'router.reports',
+  //     icon: 'vi-eos-icons:role-binding',
+  //     alwaysShow: true
+  //   },
+  //   children: [
+  //     {
+  //       path: 'sales',
+  //       component: 'views/Reports/Sales',
+  //       name: 'Sales',
+  //       meta: {
+  //         title: 'router.sales'
+  //       }
+  //     },
+  //     {
+  //       path: 'inventory',
+  //       component: 'views/Reports/Inventory',
+  //       name: 'Inventory',
+  //       meta: {
+  //         title: 'router.inventory'
+  //       }
+  //     },
+  //     {
+  //       path: 'araging',
+  //       component: 'views/Reports/ARaging',
+  //       name: 'AR Aging',
+  //       meta: {
+  //         title: 'router.arAging'
+  //       }
+  //     },
+  //     {
+  //       path: 'principalaging',
+  //       component: 'views/Reports/PrincipalAging',
+  //       name: 'PrincipalAging',
+  //       meta: {
+  //         title: 'router.principalAging'
+  //       }
+  //     }
+  //   ]
+  // }],
+  // [{
+  //   path: '/templates',
+  //   component: '#',
+  //   name: 'Template',
+  //   meta: {},
+  //   children: [
+  //     {
+  //       path: 'index',
+  //       component: 'views/Templates/Templates',
+  //       name: 'Templates',
+  //       meta: {
+  //         title: 'router.templates',
+  //         icon: 'vi-cib:telegram-plane'
+  //       }
+  //     }
+  //   ]
+  // }],
+  // [{
+  //   path: '/users',
+  //   component: '#',
+  //   redirect: '/users/useracclist',
+  //   name: 'User',
+  //   meta: {
+  //     title: 'router.users',
+  //     icon: 'vi-cil:border-all',
+  //     alwaysShow: true
+  //   },
+  //   children: [
+  //     {
+  //       path: 'useracclist',
+  //       component: 'views/Users/UserAccList',
+  //       name: 'User Acc List',
+  //       meta: {
+  //         title: 'router.userAccList',
+  //         noCache: true,
+  //         affix: true
+  //       }
+  //     },
+  //     {
+  //       path: 'usermanagement',
+  //       component: 'views/Users/UserManagement',
+  //       name: 'User Management',
+  //       meta: {
+  //         title: 'router.userManagement',
+  //         noCache: true,
+  //         affix: true
+  //       }
+  //     }
+  //   ]
+  // }],
   [
     {
       path: '/external-link',

@@ -84,34 +84,130 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
     path: '/dashboard',
     component: Layout,
     redirect: '/dashboard/analysis',
-    name: 'Dashboard',
+    name: 'Raw Data',
     meta: {
       title: t('router.dashboard'),
-      icon: 'vi-ant-design:dashboard-filled',
+      icon: 'vi-cil:border-all',
       alwaysShow: true
     },
     children: [
       {
         path: 'analysis',
         component: () => import('@/views/Dashboard/Analysis.vue'),
-        name: 'Analysis',
+        name: 'Add New Raw Data',
         meta: {
           title: t('router.analysis'),
           noCache: true,
           affix: true
         }
+      }
+      // {
+      //   path: 'workplace',
+      //   component: () => import('@/views/Dashboard/Workplace.vue'),
+      //   name: 'Workplace',
+      //   meta: {
+      //     title: t('router.workplace'),
+      //     noCache: true
+      //   }
+      // }
+    ]
+  },
+  {
+    path: '/reports',
+    component: Layout,
+    redirect: '/reports/sales',
+    name: 'Reports',
+    meta: {
+      title: t('router.reports'),
+      icon: 'vi-cil:border-all',
+      alwaysShow: true
+    },
+    children: [
+      {
+        path: 'sales',
+        component: () => import('@/views/Reports/Sales.vue'),
+        name: 'Sales',
+        meta: {
+          title: t('router.sales'),
+          noCache: true,
+          affix: true
+        }
       },
       {
-        path: 'workplace',
-        component: () => import('@/views/Dashboard/Workplace.vue'),
-        name: 'Workplace',
+        path: 'inventory',
+        component: () => import('@/views/Reports/Inventory.vue'),
+        name: 'Inventory',
         meta: {
-          title: t('router.workplace'),
+          title: t('router.inventory'),
+          noCache: true
+        }
+      },
+      {
+        path: 'araging',
+        component: () => import('@/views/Reports/ARaging.vue'),
+        name: 'AR Aging',
+        meta: {
+          title: t('router.arAging'),
+          noCache: true
+        }
+      },
+      {
+        path: 'principalaging',
+        component: () => import('@/views/Reports/PrincipalAging.vue'),
+        name: 'Principal Aging',
+        meta: {
+          title: t('router.principalAging'),
           noCache: true
         }
       }
     ]
   },
+  {
+    path: '/templates',
+    component: Layout,
+    name: 'Templates',
+    meta: {},
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/Templates/Templates.vue'),
+        name: 'Templates',
+        meta: {
+          title: t('router.templates'),
+          icon: 'vi-cib:telegram-plane'
+        }
+      }
+    ]
+  },
+  // {
+  //   path: '/users',
+  //   component: Layout,
+  //   redirect: '/users/useracclist',
+  //   name: 'User',
+  //   meta: {
+  //     title: t('router.users'),
+  //     icon: 'vi-eos-icons:role-binding',
+  //     alwaysShow: true
+  //   },
+  //   children: [
+  //     {
+  //       path: 'useracclist',
+  //       component: () => import('@/views/Users/UserAccList.vue'),
+  //       name: 'User Acc List',
+  //       meta: {
+  //         title: t('router.userAccList')
+  //       }
+  //     },
+  //     {
+  //       path: 'usermanagement',
+  //       component: () => import('@/views/Users/UserManagement.vue'),
+  //       name: 'User Management',
+  //       meta: {
+  //         title: t('router.userManagement')
+  //       }
+  //     }
+  //   ]
+  // },
   {
     path: '/external-link',
     component: Layout,
