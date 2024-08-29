@@ -4,6 +4,7 @@ import { useI18n } from '@/hooks/web/useI18n'
 import { ref, reactive, unref } from 'vue'
 import { Form, FormSchema } from '@/components/Form'
 import { Table, TableColumn } from '@/components/Table'
+import { ElTabs, ElTabPane } from 'element-plus'
 import { getTreeTableListApi } from '@/api/table'
 // import { ElTag } from 'element-plus'
 import { useTable } from '@/hooks/web/useTable'
@@ -158,7 +159,7 @@ const { tableRegister, tableState } = useTable({
     }
   }
 })
-const { loading, dataList, total, currentPage, pageSize } = tableState
+const { loading, dataList, total } = tableState
 
 const columns = reactive<TableColumn[]>([
   {
@@ -167,7 +168,7 @@ const columns = reactive<TableColumn[]>([
   },
   {
     field: 'index',
-    label: t('tableDemo.index'),
+    label: 'No.',
     type: 'index'
   },
   {
@@ -175,14 +176,16 @@ const columns = reactive<TableColumn[]>([
     label: 'State',
     formatter: () => {
       return 'State Total'
-    }
+    },
+    width: '150px'
   },
   {
     field: 'seller_name',
     label: 'Seller Name',
     formatter: () => {
       return 'Seller Name'
-    }
+    },
+    width: '150px'
   },
   {
     field: 'content',
@@ -193,21 +196,24 @@ const columns = reactive<TableColumn[]>([
         label: 'Target',
         formatter: () => {
           return '5,440.00'
-        }
+        },
+        width: '100px'
       },
       {
         field: 'sales',
         label: 'Sales',
         formatter: () => {
           return '4,360.00'
-        }
+        },
+        width: '100px'
       },
       {
         field: 'sales_achievement',
         label: 'Sales Achievement % (ACH)',
         formatter: () => {
           return '124.77%'
-        }
+        },
+        width: '230px'
       },
       {
         field: 'net_sales',
@@ -258,24 +264,35 @@ const columns = reactive<TableColumn[]>([
 const actionFn = (data) => {
   console.log(data)
 }
+
+// Tabs setup
+const activeTab = ref('first') // Default active tab
 </script>
 
 <template>
   <ContentWrap :title="t('guideDemo.guide')" :message="t('guideDemo.message')">
-    <Form :schema="schema" label-width="150px" />
-    <Table
-      v-model:pageSize="pageSize"
-      v-model:currentPage="currentPage"
-      :columns="columns"
-      :data="dataList"
-      row-key="id"
-      :loading="loading"
-      sortable
-      :pagination="{
-        total: total
-      }"
-      @register="tableRegister"
-    />
+    <!-- Tabs Section -->
+    <ElTabs v-model="activeTab">
+      <ElTabPane label="Format 6" name="first">
+        <!-- Content for Tab 1-->
+        <Form :schema="schema" label-width="150px" label-position="left" />
+        <Table
+          :columns="columns"
+          :data="dataList"
+          row-key="id"
+          :loading="loading"
+          sortable
+          @register="tableRegister"
+        />
+        <div style=" padding-right: 10px; margin-top: 10px;text-align: right">
+          Total: {{ total }}
+        </div>
+      </ElTabPane>
+      <ElTabPane label="Sample Tab" name="second">
+        <!-- Content for Tab 2 -->
+        <p>This is content for Tab 2.</p>
+      </ElTabPane>
+    </ElTabs>
   </ContentWrap>
 </template>
 
