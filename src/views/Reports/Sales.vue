@@ -146,7 +146,7 @@ const schema = ref<FormSchema[]>([
 // }
 
 // Table setup
-const { tableRegister, tableState } = useTable({
+const { tableState } = useTable({
   fetchDataApi: async () => {
     const { currentPage, pageSize } = tableState
     const res = await getTreeTableListApi({
@@ -159,7 +159,135 @@ const { tableRegister, tableState } = useTable({
     }
   }
 })
-const { loading, dataList, total } = tableState
+// const { loading, dataList, total } = tableState
+
+// Hardcoded table data
+const dataList = reactive([
+  {
+    id: '1',
+    state: 'Total EM',
+    seller_name: null,
+    content: {
+      target: '5440',
+      sales: '4360',
+      sales_achievement: '124.77%',
+      net_sales: '477.5',
+      bsr: '40.89',
+      bsr_vs_sales: '0.94%'
+    },
+    children: []
+  },
+  {
+    id: '2',
+    state: 'Total SWK',
+    seller_name: null,
+    content: {
+      target: '2520',
+      sales: '2260',
+      sales_achievement: '111.5%',
+      net_sales: '345.8',
+      bsr: '30.82',
+      bsr_vs_sales: '1.36%'
+    },
+    children: []
+  },
+  {
+    id: '3',
+    state: 'Total KCH',
+    seller_name: null,
+    content: {
+      target: '660',
+      sales: '660',
+      sales_achievement: '100%',
+      net_sales: '105.1',
+      bsr: '7.62',
+      bsr_vs_sales: '1.15%'
+    },
+    children: [
+      {
+        id: '4',
+        state: 'KCH KG01',
+        seller_name: 'ABU',
+        content: {
+          target: '230',
+          sales: '290',
+          sales_achievement: '79.31%',
+          net_sales: '65',
+          bsr: '1.68',
+          bsr_vs_sales: '0.58%'
+        }
+      },
+      {
+        id: '5',
+        state: 'KCH KG02',
+        seller_name: 'ALI',
+        content: {
+          target: '430',
+          sales: '370',
+          sales_achievement: '116.22%',
+          net_sales: '40.1',
+          bsr: '5.94',
+          bsr_vs_sales: '1.61%'
+        }
+      }
+    ]
+  },
+  {
+    id: '6',
+    state: 'TOTAL SBH',
+    seller_name: null,
+    content: {
+      target: '2920',
+      sales: '2100',
+      sales_achievement: '139.05%',
+      net_sales: '131.7',
+      bsr: '10.07',
+      bsr_vs_sales: '0.48%'
+    },
+    children: []
+  },
+  {
+    id: '7',
+    state: 'Total KK',
+    seller_name: null,
+    content: {
+      target: '860',
+      sales: '580',
+      sales_achievement: '148.28%',
+      net_sales: '37.9',
+      bsr: '4.21',
+      bsr_vs_sales: '0.73%'
+    },
+    children: [
+      {
+        id: '8',
+        state: 'KK-AG01',
+        seller_name: 'AHMAD',
+        content: {
+          target: '930',
+          sales: '710',
+          sales_achievement: '130.99%',
+          net_sales: '34.1',
+          bsr: '3.73',
+          bsr_vs_sales: '0.53%'
+        }
+      },
+      {
+        id: '9',
+        state: 'KK-AG02',
+        seller_name: 'ADULAH',
+        content: {
+          target: '1130',
+          sales: '810',
+          sales_achievement: '139.51%',
+          net_sales: '59.7',
+          bsr: '2.13',
+          bsr_vs_sales: '0.26%'
+        }
+      }
+    ]
+  }
+])
 
 const columns = reactive<TableColumn[]>([
   {
@@ -174,17 +302,11 @@ const columns = reactive<TableColumn[]>([
   {
     field: 'state',
     label: 'State',
-    formatter: () => {
-      return 'State Total'
-    },
     width: '150px'
   },
   {
     field: 'seller_name',
     label: 'Seller Name',
-    formatter: () => {
-      return 'Seller Name'
-    },
     width: '150px'
   },
   {
@@ -194,47 +316,35 @@ const columns = reactive<TableColumn[]>([
       {
         field: 'target',
         label: 'Target',
-        formatter: () => {
-          return '5,440.00'
-        },
-        width: '100px'
+        width: '100px',
+        formatter: (row) => row.content.target
       },
       {
         field: 'sales',
         label: 'Sales',
-        formatter: () => {
-          return '4,360.00'
-        },
-        width: '100px'
+        width: '100px',
+        formatter: (row) => row.content.sales
       },
       {
         field: 'sales_achievement',
         label: 'Sales Achievement % (ACH)',
-        formatter: () => {
-          return '124.77%'
-        },
-        width: '230px'
+        width: '230px',
+        formatter: (row) => row.content.sales_achievement
       },
       {
         field: 'net_sales',
         label: 'Net Sales',
-        formatter: () => {
-          return '477.50'
-        }
+        formatter: (row) => row.content.net_sales
       },
       {
         field: 'bsr',
         label: 'BSR',
-        formatter: () => {
-          return '40.89'
-        }
+        formatter: (row) => row.content.bsr
       },
       {
         field: 'bsr_vs_sales',
         label: 'BSR vs Sales',
-        formatter: () => {
-          return '0.94%'
-        }
+        formatter: (row) => row.content.bsr_vs_sales
       },
       {
         field: 'reach',
@@ -276,16 +386,9 @@ const activeTab = ref('first') // Default active tab
       <ElTabPane label="Format 6" name="first">
         <!-- Content for Tab 1-->
         <Form :schema="schema" label-width="150px" label-position="left" />
-        <Table
-          :columns="columns"
-          :data="dataList"
-          row-key="id"
-          :loading="loading"
-          sortable
-          @register="tableRegister"
-        />
-        <div style=" padding-right: 10px; margin-top: 10px;text-align: right">
-          Total: {{ total }}
+        <Table :columns="columns" :data="dataList" row-key="id" sortable />
+        <div style="padding-right: 10px; margin-top: 10px; text-align: right">
+          Total: {{ dataList.length }}
         </div>
       </ElTabPane>
       <ElTabPane label="Sample Tab" name="second">
