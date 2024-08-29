@@ -87,7 +87,7 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
     name: 'Raw Data',
     meta: {
       title: t('router.dashboard'),
-      icon: 'vi-cil:border-all',
+      icon: 'ion:grid-outline',
       alwaysShow: true
     },
     children: [
@@ -119,7 +119,7 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
     name: 'Reports',
     meta: {
       title: t('router.reports'),
-      icon: 'vi-cil:border-all',
+      icon: 'vi-cil:clipboard',
       alwaysShow: true
     },
     children: [
@@ -174,40 +174,43 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         name: 'Templates',
         meta: {
           title: t('router.templates'),
-          icon: 'vi-cib:telegram-plane'
+          icon: 'fluent:calendar-template-32-regular'
         }
       }
     ]
   },
-  // {
-  //   path: '/users',
-  //   component: Layout,
-  //   redirect: '/users/useracclist',
-  //   name: 'User',
-  //   meta: {
-  //     title: t('router.users'),
-  //     icon: 'vi-eos-icons:role-binding',
-  //     alwaysShow: true
-  //   },
-  //   children: [
-  //     {
-  //       path: 'useracclist',
-  //       component: () => import('@/views/Users/UserAccList.vue'),
-  //       name: 'User Acc List',
-  //       meta: {
-  //         title: t('router.userAccList')
-  //       }
-  //     },
-  //     {
-  //       path: 'usermanagement',
-  //       component: () => import('@/views/Users/UserManagement.vue'),
-  //       name: 'User Management',
-  //       meta: {
-  //         title: t('router.userManagement')
-  //       }
-  //     }
-  //   ]
-  // },
+  {
+    path: '/users',
+    component: Layout,
+    redirect: '/users/useracclist',
+    name: 'Users',
+    meta: {
+      title: t('router.users'),
+      icon: 'vi-cil:user',
+      alwaysShow: true
+    },
+    children: [
+      {
+        path: 'useracclist',
+        component: () => import('@/views/Users/UserAccList.vue'),
+        name: 'UserAccList',
+        meta: {
+          title: t('router.userAccList'),
+          noCache: true,
+          affix: true
+        }
+      },
+      {
+        path: 'usermanagement',
+        component: () => import('@/views/Users/UserManagement.vue'),
+        name: 'UserManagement',
+        meta: {
+          title: t('router.userManagement'),
+          noCache: true
+        }
+      }
+    ]
+  },
   {
     path: '/external-link',
     component: Layout,

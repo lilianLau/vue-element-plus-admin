@@ -12,7 +12,7 @@ const adminList = [
     name: 'Raw Data',
     meta: {
       title: 'router.dashboard',
-      icon: 'vi-cil:border-all',
+      icon: 'ion:grid-outline',
       alwaysShow: true
     },
     children: [
@@ -45,7 +45,7 @@ const adminList = [
     name: 'Reports',
     meta: {
       title: 'router.reports',
-      icon: 'vi-eos-icons:role-binding',
+      icon: 'vi-cil:clipboard',
       alwaysShow: true
     },
     children: [
@@ -95,44 +95,44 @@ const adminList = [
         name: 'Templates',
         meta: {
           title: 'router.templates',
-          icon: 'vi-cib:telegram-plane'
+          icon: 'fluent:calendar-template-32-regular'
         }
       }
     ]
   },
-  // {
-  //   path: '/user',
-  //   component: '#',
-  //   redirect: '/user/useracclist',
-  //   name: 'User',
-  //   meta: {
-  //     title: 'router.users',
-  //     icon: 'vi-cil:border-all',
-  //     alwaysShow: true
-  //   },
-  //   children: [
-  //     {
-  //       path: 'useracclist',
-  //       component: 'views/User/UserAccList',
-  //       name: 'User Acc List',
-  //       meta: {
-  //         title: 'router.userAccList',
-  //         noCache: true,
-  //         affix: true
-  //       }
-  //     },
-  //     {
-  //       path: 'usermanagement',
-  //       component: 'views/User/UserManagement',
-  //       name: 'User Management',
-  //       meta: {
-  //         title: 'router.userManagement',
-  //         noCache: true,
-  //         affix: true
-  //       }
-  //     }
-  //   ]
-  // },
+  {
+    path: '/users',
+    component: '#',
+    redirect: '/users/useracclist',
+    name: 'Users',
+    meta: {
+      title: 'router.users',
+      icon: 'vi-cil:user',
+      alwaysShow: true
+    },
+    children: [
+      {
+        path: 'useracclist',
+        component: 'views/Users/UserAccList',
+        name: 'UserAccList',
+        meta: {
+          title: 'router.userAccList',
+          noCache: true,
+          affix: true
+        }
+      },
+      {
+        path: 'usermanagement',
+        component: 'views/Users/UserManagement',
+        name: 'UserManagement',
+        meta: {
+          title: 'router.userManagement',
+          noCache: true,
+          affix: true
+        }
+      }
+    ]
+  },
   {
     path: '/external-link',
     component: '#',
@@ -867,7 +867,7 @@ const menus = [
       id: 1,
       meta: {
         title: '首页',
-        icon: 'vi-cil:border-all',
+        icon: 'ion:grid-outline',
         alwaysShow: true
       },
       children: [
@@ -925,7 +925,7 @@ const menus = [
     //   id: 9,
     //   meta: {
     //     title: '销售',
-    //     icon: 'vi-cil:border-all',
+    //     icon: 'vi-cil:clipboard',
     //     alwaysShow: true
     //   },
     //   children: [
@@ -1212,7 +1212,7 @@ const menus = [
       id: 1,
       meta: {
         title: '首页',
-        icon: 'vi-cil:border-all',
+        icon: 'ion:grid-outline',
         alwaysShow: true
       },
       children: [
@@ -1241,101 +1241,6 @@ const menus = [
       ]
     }
   ],
-  // [{
-  //   path: '/reports',
-  //   component: '#',
-  //   redirect: '/reports/sales',
-  //   name: 'Reports',
-  //   meta: {
-  //     title: 'router.reports',
-  //     icon: 'vi-eos-icons:role-binding',
-  //     alwaysShow: true
-  //   },
-  //   children: [
-  //     {
-  //       path: 'sales',
-  //       component: 'views/Reports/Sales',
-  //       name: 'Sales',
-  //       meta: {
-  //         title: 'router.sales'
-  //       }
-  //     },
-  //     {
-  //       path: 'inventory',
-  //       component: 'views/Reports/Inventory',
-  //       name: 'Inventory',
-  //       meta: {
-  //         title: 'router.inventory'
-  //       }
-  //     },
-  //     {
-  //       path: 'araging',
-  //       component: 'views/Reports/ARaging',
-  //       name: 'AR Aging',
-  //       meta: {
-  //         title: 'router.arAging'
-  //       }
-  //     },
-  //     {
-  //       path: 'principalaging',
-  //       component: 'views/Reports/PrincipalAging',
-  //       name: 'PrincipalAging',
-  //       meta: {
-  //         title: 'router.principalAging'
-  //       }
-  //     }
-  //   ]
-  // }],
-  // [{
-  //   path: '/templates',
-  //   component: '#',
-  //   name: 'Template',
-  //   meta: {},
-  //   children: [
-  //     {
-  //       path: 'index',
-  //       component: 'views/Templates/Templates',
-  //       name: 'Templates',
-  //       meta: {
-  //         title: 'router.templates',
-  //         icon: 'vi-cib:telegram-plane'
-  //       }
-  //     }
-  //   ]
-  // }],
-  // [{
-  //   path: '/users',
-  //   component: '#',
-  //   redirect: '/users/useracclist',
-  //   name: 'User',
-  //   meta: {
-  //     title: 'router.users',
-  //     icon: 'vi-cil:border-all',
-  //     alwaysShow: true
-  //   },
-  //   children: [
-  //     {
-  //       path: 'useracclist',
-  //       component: 'views/Users/UserAccList',
-  //       name: 'User Acc List',
-  //       meta: {
-  //         title: 'router.userAccList',
-  //         noCache: true,
-  //         affix: true
-  //       }
-  //     },
-  //     {
-  //       path: 'usermanagement',
-  //       component: 'views/Users/UserManagement',
-  //       name: 'User Management',
-  //       meta: {
-  //         title: 'router.userManagement',
-  //         noCache: true,
-  //         affix: true
-  //       }
-  //     }
-  //   ]
-  // }],
   [
     {
       path: '/external-link',
