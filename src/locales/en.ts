@@ -351,7 +351,7 @@ export default {
     iAgree: 'I agree'
   },
   guideDemo: {
-    guide: 'Guide',
+    guide: 'Daily Sales Report',
     start: 'Start',
     message:
       'The guide page is very useful for some people who enter the project for the first time. You can briefly introduce the functions of the project. The boot page is based on driver.js'

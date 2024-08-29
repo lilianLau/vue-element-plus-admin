@@ -344,7 +344,7 @@ export default {
     iAgree: '我同意'
   },
   guideDemo: {
-    guide: '引导页',
+    guide: '每日销售报告',
     start: '开始',
     message:
       '引导页对于一些第一次进入项目的人很有用，你可以简单介绍下项目的功能。引导页基于 driver.js'
