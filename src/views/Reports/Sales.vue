@@ -292,26 +292,31 @@ const dataList = reactive([
 const columns = reactive<TableColumn[]>([
   {
     field: 'selection',
-    type: 'selection'
+    type: 'selection',
+    fixed: 'left'
   },
   {
     field: 'index',
     label: 'No.',
-    type: 'index'
+    type: 'index',
+    fixed: 'left'
   },
   {
     field: 'state',
     label: 'State',
-    width: '150px'
+    width: '150px',
+    fixed: 'left'
   },
   {
     field: 'seller_name',
     label: 'Seller Name',
-    width: '150px'
+    width: '100px',
+    fixed: 'left'
   },
   {
     field: 'content',
     label: 'NON FOOD GRAND TOTAL (Get from Food Category)',
+    fixed: 'left',
     children: [
       {
         field: 'target',
@@ -328,7 +333,7 @@ const columns = reactive<TableColumn[]>([
       {
         field: 'sales_achievement',
         label: 'Sales Achievement % (ACH)',
-        width: '230px',
+        width: '150px',
         formatter: (row) => row.content.sales_achievement
       },
       {
@@ -355,6 +360,22 @@ const columns = reactive<TableColumn[]>([
         label: 'MSS %'
       }
     ]
+  },
+  {
+    field: 'inventory_value',
+    label: 'Inventory value (RM)'
+  },
+  {
+    field: 'inventory_value',
+    label: 'Inventory value (RM)'
+  },
+  {
+    field: 'inventory_value',
+    label: 'Inventory value (RM)'
+  },
+  {
+    field: 'inventory_value',
+    label: 'Inventory value (RM)'
   },
   {
     field: 'action',
@@ -386,7 +407,13 @@ const activeTab = ref('first') // Default active tab
       <ElTabPane label="Format 6" name="first">
         <!-- Content for Tab 1-->
         <Form :schema="schema" label-width="150px" label-position="left" />
-        <Table :columns="columns" :data="dataList" row-key="id" sortable />
+        <Table
+          :columns="columns"
+          :data="dataList"
+          row-key="id"
+          sortable
+          :scroll="{ x: 'max-content' }"
+        />
         <div style="padding-right: 10px; margin-top: 10px; text-align: right">
           Total: {{ dataList.length }}
         </div>
